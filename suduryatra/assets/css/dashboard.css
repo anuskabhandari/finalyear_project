@@ -1,0 +1,212 @@
+* {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #f5f7fa;
+    color: #333;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* Layout */
+  .container {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    background: linear-gradient(135deg, #00695c, #004d40);
+    width: 260px;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    color: #e0f2f1;
+    transition: width 0.3s ease;
+  }
+  .sidebar.collapsed {
+    width: 70px;
+  }
+
+  .sidebar .logo {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    user-select: none;
+    text-align: center;
+  }
+
+  .nav-links {
+    flex-grow: 1;
+  }
+
+  .nav-links a {
+    display: flex;
+    align-items: center;
+    padding: 15px 18px;
+    border-radius: 8px;
+    margin-bottom: 14px;
+    font-weight: 500;
+    color: #b2dfdb;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  .nav-links a:hover,
+  .nav-links a.active {
+    background: #004d40;
+    color: #a7ffeb;
+    box-shadow: 0 4px 12px rgba(0, 77, 64, 0.5);
+  }
+
+  .nav-links a svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+    fill: currentColor;
+    flex-shrink: 0;
+    transition: margin 0.3s;
+  }
+
+  /* If collapsed, hide label */
+  .sidebar.collapsed .nav-links a span {
+    display: none;
+  }
+  .sidebar.collapsed .nav-links a svg {
+    margin-right: 0;
+  }
+
+  /* Toggle button */
+  .toggle-btn {
+    background: transparent;
+    border: none;
+    color: #e0f2f1;
+    font-size: 22px;
+    cursor: pointer;
+    margin-top: auto;
+    text-align: center;
+    padding: 10px 0;
+    user-select: none;
+  }
+
+  /* Main content */
+  .main-content {
+    flex-grow: 1;
+    background: #fff;
+    padding: 40px 50px;
+    overflow-y: auto;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.05);
+  }
+
+  .main-content h1 {
+    font-weight: 700;
+    color: #00695c;
+    margin-bottom: 25px;
+  }
+
+  /* Cards grid */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 28px;
+  }
+
+  .card {
+    background: #e0f2f1;
+    border-radius: 14px;
+    padding: 30px 25px;
+    box-shadow: 0 8px 20px rgba(0, 105, 92, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(0, 105, 92, 0.25);
+  }
+  .card svg {
+    width: 40px;
+    height: 40px;
+    fill: #004d40;
+    margin-bottom: 15px;
+  }
+  .card h3 {
+    margin: 0 0 12px;
+    color: #004d40;
+  }
+  .card p {
+    font-weight: 500;
+    color: #00695c;
+    font-size: 15px;
+    line-height: 1.4;
+  }
+  .card a {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 10px 20px;
+    background: #004d40;
+    color: #a7ffeb;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  .card a:hover {
+    background: #00332f;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .container {
+      flex-direction: column;
+    }
+    .sidebar {
+      width: 100%;
+      flex-direction: row;
+      padding: 10px 15px;
+      overflow-x: auto;
+    }
+    .sidebar.collapsed {
+      width: 100%;
+    }
+    .sidebar .logo {
+      font-size: 20px;
+      margin-bottom: 0;
+      flex-shrink: 0;
+      padding-right: 25px;
+      border-right: 1px solid #004d40;
+    }
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      flex-grow: 1;
+      padding-left: 15px;
+      overflow-x: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #004d40 transparent;
+    }
+    .nav-links a {
+      padding: 10px 15px;
+      margin-bottom: 0;
+      white-space: nowrap;
+      font-size: 14px;
+    }
+    .nav-links a svg {
+      margin-right: 8px;
+      width: 18px;
+      height: 18px;
+    }
+    .main-content {
+      padding: 30px 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .card {
+      padding: 25px 15px;
+    }
+    .card h3 {
+      font-size: 18px;
+    }
+  }

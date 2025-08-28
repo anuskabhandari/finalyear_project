@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ugratara Temple - Details</title>
+   <link rel="stylesheet" href=".../../assets/css/places.css"/>
+</head>
+<body>
+
+<header>
+  Ugratara Temple - Details
+</header>
+
+<div class="container">
+
+  <div class="carousel">
+    <img src="images\ugratara-temple-1.jpg" alt="Ugratara Temple Image">
+  </div>
+
+  <h2>Overview</h2>
+  <p class="description">
+    Ugratara Temple is one of the most sacred Hindu temples located in Dadeldhura, Nepal. It is dedicated to Goddess Tara
+    and draws thousands of pilgrims during major festivals. Surrounded by hills and peaceful atmosphere, it is both a religious
+    and scenic destination.
+  </p>
+
+  <h2>Details</h2>
+  <table>
+    <tr><td><strong>Location:</strong></td><td>Dadeldhura District, Sudurpashchim Nepal</td></tr>
+    <tr><td><strong>Entry Fee:</strong></td><td>Free</td></tr>
+    <tr><td><strong>Best Time to Visit:</strong></td><td>Dashain and other major Hindu festivals</td></tr>
+    <tr><td><strong>Main Attractions:</strong></td><td>Goddess Tara shrine, cultural rituals, scenic views</td></tr>
+    <tr><td><strong>Recommended Duration:</strong></td><td>1 day</td></tr>
+  </table>
+
+  <div class="auth-status" id="authStatus">You are not logged in.</div>
+
+  <button onclick="showLogin()">Login to Book</button>
+  <button id="bookBtn" onclick="openBooking()" disabled>Book Now</button>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <h3>Visitor Login</h3>
+      <form onsubmit="login(event)">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+        <button type="button" onclick="closeLogin()">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Booking Modal -->
+  <div id="bookingModal" class="modal">
+    <div class="modal-content">
+      <h3>Book Ugratara Visit</h3>
+      <form onsubmit="submitBooking(event)">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Email Address" required>
+        <input type="date" required>
+        <input type="number" placeholder="Number of People" required>
+        <textarea placeholder="Special Requests (Optional)"></textarea>
+        <button type="submit">Confirm Booking</button>
+        <button type="button" onclick="closeBooking()">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+  <h2>Navigation Map</h2>
+  <div class="map">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28287.56663588068!2d80.57204340945548!3d29.29277564475463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399a58c81db20fcd%3A0x415725de1a7c4c13!2sUgratara%20Temple!5e0!3m2!1sen!2snp!4v1689771111234!5m2!1sen!2snp"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <h2>Leave a Review</h2>
+  <form class="review-form" onsubmit="submitReview(event)">
+    <label for="reviewName">Your Name:</label>
+    <input type="text" id="reviewName" placeholder="Enter your name" required>
+    <label for="reviewText">Your Experience:</label>
+    <textarea id="reviewText" rows="4" placeholder="Share your thoughts..." required></textarea>
+    <button type="submit">Submit Review</button>
+  </form>
+
+  <a href="index.html" class="back-link">← Back to Destinations</a>
+
+</div>
+
+<script>
+  let loggedIn = false;
+
+  function showLogin() {
+    document.getElementById('loginModal').style.display = 'flex';
+  }
+
+  function closeLogin() {
+    document.getElementById('loginModal').style.display = 'none';
+  }
+
+  function login(e) {
+    e.preventDefault();
+    const user = document.getElementById('username').value;
+    const pass = document.getElementById('password').value;
+    if (user && pass) {
+      loggedIn = true;
+      document.getElementById('authStatus').textContent = 'Welcome, ' + user + '!';
+      document.getElementById('bookBtn').disabled = false;
+      closeLogin();
+    } else {
+      alert("Please enter valid credentials.");
+    }
+  }
+
+  function openBooking() {
+    if (loggedIn) {
+      document.getElementById('bookingModal').style.display = 'flex';
+    }
+  }
+
+  function closeBooking() {
+    document.getElementById('bookingModal').style.display = 'none';
+  }
+
+  function submitBooking(e) {
+    e.preventDefault();
+    alert("Booking confirmed! Thank you.");
+    closeBooking();
+  }
+
+  function submitReview(e) {
+    e.preventDefault();
+    alert("Thank you for your review!");
+    e.target.reset();
+  }
+
+  // Optional: Close modal when clicking outside
+  window.onclick = function (e) {
+    if (e.target.classList.contains('modal')) {
+      closeLogin();
+      closeBooking();
+    }
+  };
+</script>
+
+</body>
+</html>

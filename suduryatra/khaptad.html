@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Khaptad Park - Details</title>
+   <link rel="stylesheet" href=".../../assets/css/places.css"/>
+</head>
+<body>
+
+<header>
+  Khaptad National Park - Details
+</header>
+
+<div class="container">
+
+  <div class="carousel">
+    <img src="images/khaptad.jpg" alt="Khaptad View">
+  </div>
+
+  <h2>Overview</h2>
+  <p class="description">
+    Khaptad National Park is a peaceful, spiritual and naturally rich destination in the far western hills of Nepal. It offers
+    scenic landscapes, a variety of flora and fauna, and religious significance due to Khaptad Baba. Perfect for trekking,
+    meditation, and nature walks.
+  </p>
+
+  <h2>Details</h2>
+  <table>
+    <tr><td><strong>Location:</strong></td><td>Far-Western Nepal (Doti, Bajura, Bajhang & Achham)</td></tr>
+    <tr><td><strong>Entry Fee:</strong></td><td>Rs. 100 per person</td></tr>
+    <tr><td><strong>Best Time to Visit:</strong></td><td>March to May, September to November</td></tr>
+    <tr><td><strong>Main Attractions:</strong></td><td>Khaptad Baba Ashram, grasslands, medicinal herbs</td></tr>
+    <tr><td><strong>Recommended Duration:</strong></td><td>3-4 days</td></tr>
+  </table>
+
+  <div class="auth-status" id="authStatus">You are not logged in.</div>
+
+  <button onclick="showLogin()">Login to Book</button>
+  <button id="bookBtn" onclick="openBooking()" disabled>Book Now</button>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <h3>Visitor Login</h3>
+      <form onsubmit="login(event)">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+        <button type="button" onclick="closeLogin()">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Booking Modal -->
+  <div id="bookingModal" class="modal">
+    <div class="modal-content">
+      <h3>Book Khaptad Tour</h3>
+      <form onsubmit="submitBooking(event)">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Email Address" required>
+        <input type="date" required>
+        <input type="number" placeholder="Number of People" required>
+        <textarea placeholder="Special Requests (Optional)"></textarea>
+        <button type="submit">Confirm Booking</button>
+        <button type="button" onclick="closeBooking()">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+  <h2>Navigation Map</h2>
+  <div class="map">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3550.4819075116743!2d81.15136097524477!3d29.279284054932944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3998b83d24b3020f%3A0xf0f4fd3057b6fa03!2sKhaptad%20National%20Park!5e0!3m2!1sen!2snp!4v1689775683849!5m2!1sen!2snp"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <h2>Leave a Review</h2>
+  <form class="review-form">
+    <label>Your Name:</label>
+    <input type="text" placeholder="Enter your name" required>
+    <label>Your Experience:</label>
+    <textarea rows="4" placeholder="Share your thoughts..." required></textarea>
+    <button type="submit">Submit Review</button>
+  </form>
+
+  <a href="index.html" class="back-link">← Back to Destinations</a>
+
+</div>
+
+<script>
+  let loggedIn = false;
+
+  function showLogin() {
+    document.getElementById('loginModal').style.display = 'flex';
+  }
+
+  function closeLogin() {
+    document.getElementById('loginModal').style.display = 'none';
+  }
+
+  function login(e) {
+    e.preventDefault();
+    const user = document.getElementById('username').value;
+    const pass = document.getElementById('password').value;
+    if (user && pass) {
+      loggedIn = true;
+      document.getElementById('authStatus').textContent = 'Welcome, ' + user + '!';
+      document.getElementById('bookBtn').disabled = false;
+      closeLogin();
+    } else {
+      alert("Please enter valid credentials.");
+    }
+  }
+
+  function openBooking() {
+    if (loggedIn) {
+      document.getElementById('bookingModal').style.display = 'flex';
+    }
+  }
+
+  function closeBooking() {
+    document.getElementById('bookingModal').style.display = 'none';
+  }
+
+  function submitBooking(e) {
+    e.preventDefault();
+    alert("Booking confirmed! Thank you.");
+    closeBooking();
+  }
+</script>
+
+</body>
+</html>

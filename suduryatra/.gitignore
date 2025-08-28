@@ -1,0 +1,31 @@
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor settings
+.vscode/
+.idea/
+*.iml
+
+# Logs
+*.log
+
+# Composer dependencies
+/vendor/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Cache / temporary files
+cache/
+tmp/
+*.tmp
+
+# Uploads (optional, if you don’t want user uploads in git)
+uploads/
+storage/
+
+# PHPUnit
+.phpunit.result.cache

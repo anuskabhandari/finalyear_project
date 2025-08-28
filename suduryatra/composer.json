@@ -1,0 +1,14 @@
+{
+    "name": "dell/suduryatra",
+    "description": "suduryatra project",
+    "authors": [
+        {
+            "name": "anuskabhandari",
+            "email": "bhandarirekha652@gmail.com"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.10",
+        "dompdf/dompdf": "^3.1"
+    }
+}
